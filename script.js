@@ -35,22 +35,21 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => observer.observe(section));
   }
 
-  // Featured strip — click a photo to expand it, others blur/shrink
-  const featuredStrip = document.getElementById('featuredStrip');
-  if (featuredStrip) {
-    const featuredItems = featuredStrip.querySelectorAll('.featured-item');
-    featuredStrip.addEventListener('click', (e) => {
-      const item = e.target.closest('.featured-item');
+  // Portfolio gallery — click a photo to expand it, others blur/shrink
+  const gallery = document.getElementById('gallery');
+  const galleryItems = document.querySelectorAll('#gallery .gallery-item');
+  if (gallery) {
+    gallery.addEventListener('click', (e) => {
+      const item = e.target.closest('.gallery-item');
       if (!item) return;
       const wasActive = item.classList.contains('active');
-      featuredItems.forEach(i => i.classList.remove('active'));
+      galleryItems.forEach(i => i.classList.remove('active'));
       if (!wasActive) item.classList.add('active');
     });
   }
 
-  // Portfolio filter tabs
+  // Portfolio filter tabs — swap which category shows in the gallery strip
   const filterTabs = document.getElementById('filterTabs');
-  const galleryItems = document.querySelectorAll('#gallery .gallery-item');
   if (filterTabs) {
     filterTabs.addEventListener('click', (e) => {
       const btn = e.target.closest('button[data-filter]');
@@ -61,29 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
       galleryItems.forEach(item => {
         const show = filter === 'all' || item.dataset.cat === filter;
         item.classList.toggle('is-visible', show);
+        if (!show) item.classList.remove('active');
       });
+      gallery.scrollLeft = 0;
     });
   }
-
-  // Lightbox
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightboxImg');
-  const lightboxClose = document.getElementById('lightboxClose');
-  document.querySelectorAll('.gallery figure img').forEach(img => {
-    img.addEventListener('click', () => {
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt;
-      lightbox.classList.add('open');
-    });
-  });
-  const closeLightbox = () => lightbox.classList.remove('open');
-  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-  if (lightbox) {
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
-  }
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeLightbox();
-  });
 });
