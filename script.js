@@ -19,6 +19,22 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 
+  // Floating side nav — highlight the section in view
+  const sideNavItems = document.querySelectorAll('.side-nav-item');
+  if (sideNavItems.length) {
+    const sections = Array.from(sideNavItems)
+      .map(item => document.getElementById(item.dataset.section))
+      .filter(Boolean);
+    const setActive = (id) => {
+      sideNavItems.forEach(item => item.classList.toggle('active', item.dataset.section === id));
+    };
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter(e => e.isIntersecting);
+      if (visible.length) setActive(visible[0].target.id);
+    }, { rootMargin: '-40% 0px -40% 0px' });
+    sections.forEach(section => observer.observe(section));
+  }
+
   // Portfolio filter tabs
   const filterTabs = document.getElementById('filterTabs');
   const galleryItems = document.querySelectorAll('#gallery .gallery-item');
