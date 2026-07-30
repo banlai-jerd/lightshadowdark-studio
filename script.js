@@ -35,7 +35,27 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => observer.observe(section));
   }
 
-  // Portfolio gallery — click a photo to expand it, others blur/shrink
+  // Photo pop-up modal
+  const photoModal = document.getElementById('photoModal');
+  const photoModalImg = document.getElementById('photoModalImg');
+  const photoModalClose = document.getElementById('photoModalClose');
+  const openPhotoModal = (img) => {
+    photoModalImg.src = img.src;
+    photoModalImg.alt = img.alt;
+    photoModal.classList.add('open');
+  };
+  const closePhotoModal = () => photoModal.classList.remove('open');
+  if (photoModalClose) photoModalClose.addEventListener('click', closePhotoModal);
+  if (photoModal) {
+    photoModal.addEventListener('click', (e) => {
+      if (e.target === photoModal) closePhotoModal();
+    });
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closePhotoModal();
+  });
+
+  // Portfolio gallery — click a photo to expand it in-row, others blur/shrink, then pop it up full-size
   const gallery = document.getElementById('gallery');
   const galleryItems = document.querySelectorAll('#gallery .gallery-item');
   if (gallery) {
@@ -44,7 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!item) return;
       const wasActive = item.classList.contains('active');
       galleryItems.forEach(i => i.classList.remove('active'));
-      if (!wasActive) item.classList.add('active');
+      if (!wasActive) {
+        item.classList.add('active');
+        const img = item.querySelector('img');
+        if (img) openPhotoModal(img);
+      }
     });
   }
 
