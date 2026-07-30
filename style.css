@@ -338,7 +338,7 @@ p { margin: 0; }
   align-items: center;
   gap: clamp(1.5rem, 4vw, 3rem);
   padding: clamp(2rem, 4vw, 3rem) clamp(1.25rem, 4vw, 3rem);
-  background: #000;
+  background: #ffff;
   border-bottom: 0.1px solid var(--line);
 }
 .bn-item {
