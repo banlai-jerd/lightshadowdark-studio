@@ -40,7 +40,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const photoModalImg = document.getElementById('photoModalImg');
   const photoModalClose = document.getElementById('photoModalClose');
   const openPhotoModal = (img) => {
-    photoModalImg.src = img.src;
+    const fullSrc = img.dataset.full;
+    photoModalImg.onerror = null;
+    if (fullSrc) {
+      photoModalImg.onerror = () => {
+        photoModalImg.onerror = null;
+        photoModalImg.src = img.src;
+      };
+      photoModalImg.src = fullSrc;
+    } else {
+      photoModalImg.src = img.src;
+    }
     photoModalImg.alt = img.alt;
     photoModal.classList.add('open');
   };

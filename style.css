@@ -711,15 +711,16 @@ html, body { margin: 0; padding: 0; height: 100%; }
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 5vh 5vw;
+  padding: 2vh 2vw;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
 .photo-modal.open { opacity: 1; pointer-events: auto; }
 .photo-modal img {
-  max-width: 90vw;
-  max-height: 90vh;
+  width: 96vw;
+  height: 96vh;
+  object-fit: contain;
   border-radius: 6px;
   box-shadow: 0 40px 100px rgba(0, 0, 0, 0.65);
   transform: scale(0.8);
