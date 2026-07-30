@@ -427,6 +427,32 @@ p { margin: 0; }
 
 /* ---------------- Portfolio ---------------- */
 
+.featured-strip {
+  display: flex;
+  gap: 0.75rem;
+  height: clamp(260px, 34vw, 440px);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.featured-item {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  cursor: pointer;
+  filter: blur(5px) brightness(0.75);
+  transition: flex 0.55s cubic-bezier(.2,.7,.3,1), filter 0.45s ease;
+}
+.featured-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.featured-item.active {
+  flex: 4;
+  filter: blur(0) brightness(1);
+}
+
 .filter-tabs {
   display: flex;
   gap: 0.6rem;
@@ -500,10 +526,12 @@ p { margin: 0; }
   align-items: center;
   padding: clamp(1.4rem, 2.4vw, 2rem) 0;
   border-top: 1px solid var(--line);
-  transition: background 0.2s ease;
+  background: var(--black);
+  transition: background 0.2s ease, transform 0.4s ease, filter 0.4s ease;
 }
 .work-list .work-row:last-child { border-bottom: 1px solid var(--line); }
-.work-row:hover { background: rgba(239,236,230,0.03); }
+.work-row:hover { background: rgba(239,236,230,0.03); transform: scale(1.02); position: relative; z-index: 2; }
+.work-list:hover > .work-row:not(:hover) { filter: blur(6px); transform: scale(0.97); }
 .work-row .idx { font-family: "Archivo Black"; color: var(--grey); font-size: 1rem; }
 .work-row .thumb { overflow: hidden; border-radius: 4px; aspect-ratio: 16/10; }
 .work-row .thumb img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.25); transition: transform 0.5s ease, filter 0.4s ease;}
@@ -609,6 +637,7 @@ p { margin: 0; }
 @media (max-width: 560px) {
   .gallery { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
   .process-steps { grid-template-columns: 1fr 1fr; }
+  .featured-strip { height: 220px; gap: 0.4rem; }
 }
 
 /* mobile nav drawer */

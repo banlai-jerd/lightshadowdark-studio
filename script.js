@@ -35,6 +35,19 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => observer.observe(section));
   }
 
+  // Featured strip — click a photo to expand it, others blur/shrink
+  const featuredStrip = document.getElementById('featuredStrip');
+  if (featuredStrip) {
+    const featuredItems = featuredStrip.querySelectorAll('.featured-item');
+    featuredStrip.addEventListener('click', (e) => {
+      const item = e.target.closest('.featured-item');
+      if (!item) return;
+      const wasActive = item.classList.contains('active');
+      featuredItems.forEach(i => i.classList.remove('active'));
+      if (!wasActive) item.classList.add('active');
+    });
+  }
+
   // Portfolio filter tabs
   const filterTabs = document.getElementById('filterTabs');
   const galleryItems = document.querySelectorAll('#gallery .gallery-item');
