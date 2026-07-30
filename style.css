@@ -459,12 +459,17 @@ p { margin: 0; }
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: thin;
+  scrollbar-color: var(--grey) transparent;
 }
+.gallery::-webkit-scrollbar { height: 6px; }
+.gallery::-webkit-scrollbar-track { background: var(--line); border-radius: 999px; }
+.gallery::-webkit-scrollbar-thumb { background: var(--grey); border-radius: 999px; }
+.gallery::-webkit-scrollbar-thumb:hover { background: var(--cream); }
 .gallery-item[data-cat] { display: none; }
 .gallery-item.is-visible {
   display: block;
-  flex: 1 0 60px;
-  min-width: 60px;
+  flex: 1 0 84px;
+  min-width: 84px;
   position: relative;
   overflow: hidden;
   border-radius: 4px;
