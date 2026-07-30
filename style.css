@@ -691,7 +691,13 @@ html, body { margin: 0; padding: 0; height: 100%; }
   z-index: -1;
 }
 
-#stars, #stars2, #stars3 { background: transparent; }
+#stars, #stars2, #stars3 {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -1000px;
+  background: transparent;
+}
 #stars:after, #stars2:after, #stars3:after {
   content: " ";
   position: absolute;
