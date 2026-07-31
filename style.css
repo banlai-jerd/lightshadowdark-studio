@@ -676,6 +676,19 @@ p { margin: 0; }
 .csb-icon svg { width: 100%; height: 100%; display: block; }
 .coming-soon-card:hover .csb-icon { transform: rotate(180deg); color: #6fe0a8; }
 
+.csb-photo {
+  position: relative;
+  z-index: 1;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(67, 211, 138, 0.25), 0 4px 12px rgba(67, 211, 138, 0.25);
+  transition: transform 0.5s ease;
+}
+.csb-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.coming-soon-card:hover .csb-photo { transform: scale(1.08); }
+
 @keyframes csPing { 0% { transform: scale(1); opacity: 1; } 75%, 100% { transform: scale(2); opacity: 0; } }
 @keyframes csPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 @keyframes csBounce {
