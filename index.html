@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./style.css?v=18">
+<link rel="stylesheet" href="./style.css?v=20">
 </head>
 <body>
 
@@ -283,19 +283,21 @@
       <h2></h2>
       <p class="lede"></p>
     </div>
-    <div class="coming-soon-card">
-      <div class="coming-soon-glow">
-        <div class="csg-blob"></div>
-        <div class="csg-dot csg-dot-a"></div>
-        <div class="csg-dot csg-dot-b"></div>
-        <div class="csg-sheen"></div>
-      </div>
-      <div class="coming-soon-badge">
-        <span class="csb-ring csb-ring-a"></span>
-        <span class="csb-ring csb-ring-b"></span>
-        <span class="csb-photo">
-          <img src="assets/img/Manji.png" alt="">
-        </span>
+    <div class="floating-orb" id="floatingOrb">
+      <div class="coming-soon-card" id="comingSoonCard">
+        <div class="coming-soon-glow">
+          <div class="csg-blob"></div>
+          <div class="csg-dot csg-dot-a"></div>
+          <div class="csg-dot csg-dot-b"></div>
+          <div class="csg-sheen"></div>
+        </div>
+        <div class="coming-soon-badge">
+          <span class="csb-ring csb-ring-a"></span>
+          <span class="csb-ring csb-ring-b"></span>
+          <span class="csb-photo">
+            <img src="assets/img/Manji.png" alt="">
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -333,6 +335,88 @@
   <button class="photo-modal-nav photo-modal-next" id="photoModalNext" aria-label="Next photo">»</button>
 </div>
 
-<script src="./script.js?v=18"></script>
+<div class="pipboy-overlay" id="pipboyOverlay">
+  <button class="pipboy-close" id="pipboyClose">✕</button>
+  <div class="pipboy-wrapper">
+    <input type="radio" id="tab-stat" name="pip-tabs" checked>
+    <input type="radio" id="tab-inv" name="pip-tabs">
+    <input type="radio" id="tab-data" name="pip-tabs">
+    <div class="pipboy-chassis">
+      <div class="screw tl"></div>
+      <div class="screw tr"></div>
+      <div class="screw bl"></div>
+      <div class="screw br"></div>
+      <div class="crt-screen">
+        <div class="screen-glass"></div>
+        <div class="scanlines"></div>
+        <div class="boot-sequence">
+          <header class="top-bar">
+            <div class="dynamic-title flicker-text"></div>
+            <div class="line flexible"></div>
+            <div class="stats-info">
+              <span>HP <span class="bold">348/450</span></span>
+              <span>AP <span class="bold">67/67</span></span>
+              <span class="pulse-icon">⚡</span>
+            </div>
+          </header>
+          <main class="middle-section">
+            <div class="tab-content content-stat">
+              <aside class="side-menu">
+                <div>CND</div>
+                <div>RAD</div>
+                <div>EFF</div>
+                <div class="active-box-static">CLK</div>
+              </aside>
+              <section class="clock-display">
+                <div class="terminal-block">
+                  <div class="time">08<span class="blink-colon">:</span>40</div>
+                </div>
+                <div class="date">02.23.2026</div>
+              </section>
+              <aside class="right-menu">
+                <div class="hazard-symbol">
+                  <div class="hazard-core"></div>
+                </div>
+                <div class="rad-text">RADS</div>
+              </aside>
+            </div>
+            <div class="tab-content content-inv">
+              <ul class="inventory-list">
+                <li><span class="item-name">Stimpak (12)</span><span class="item-wgt">WGT 0.5</span></li>
+                <li class="active-terminal-line"><span class="item-name">10mm Pistol</span><span class="item-wgt">WGT 4.0</span></li>
+                <li><span class="item-name">Nuka-Cola Quantum</span><span class="item-wgt">WGT 1.0</span></li>
+                <li><span class="item-name">RadAway (5)</span><span class="item-wgt">WGT 0.5</span></li>
+                <li><span class="item-name">Power Armor Core</span><span class="item-wgt">WGT 3.0</span></li>
+              </ul>
+            </div>
+            <div class="tab-content content-data">
+              <div class="radar-container">
+                <span></span>
+                <div class="blip"></div>
+              </div>
+              <div class="radar-text flicker-fast">SEARCHING SATELLITE...</div>
+            </div>
+          </main>
+          <footer class="bottom-bar">
+            <label for="tab-stat" class="nav-item">STAT</label>
+            <div class="line flexible"></div>
+            <label for="tab-inv" class="nav-item">INV</label>
+            <div class="line flexible"></div>
+            <label for="tab-data" class="nav-item">DATA</label>
+            <div class="line flexible"></div>
+            <div class="radio-visualizer">
+              <div class="bar bar-1"></div>
+              <div class="bar bar-2"></div>
+              <div class="bar bar-3"></div>
+              <div class="bar bar-4"></div>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="./script.js?v=20"></script>
 </body>
 </html>

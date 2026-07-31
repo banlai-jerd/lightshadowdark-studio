@@ -122,4 +122,50 @@ document.addEventListener('DOMContentLoaded', () => {
       gallery.scrollLeft = 0;
     });
   }
+
+  // Floating orb — drifts continuously and bounces off the browser edges, DVD-logo style
+  const floatingOrb = document.getElementById('floatingOrb');
+  if (floatingOrb) {
+    let w = floatingOrb.offsetWidth || 350;
+    let h = floatingOrb.offsetHeight || 280;
+    let x = Math.random() * Math.max(0, window.innerWidth - w);
+    let y = Math.random() * Math.max(0, window.innerHeight - h);
+    const speed = 0.5 + Math.random() * 0.4;
+    const angle = Math.random() * Math.PI * 2;
+    let vx = Math.cos(angle) * speed;
+    let vy = Math.sin(angle) * speed;
+
+    const step = () => {
+      w = floatingOrb.offsetWidth;
+      h = floatingOrb.offsetHeight;
+      x += vx;
+      y += vy;
+      if (x <= 0) { x = 0; vx = Math.abs(vx); }
+      else if (x + w >= window.innerWidth) { x = window.innerWidth - w; vx = -Math.abs(vx); }
+      if (y <= 0) { y = 0; vy = Math.abs(vy); }
+      else if (y + h >= window.innerHeight) { y = window.innerHeight - h; vy = -Math.abs(vy); }
+      floatingOrb.style.left = x + 'px';
+      floatingOrb.style.top = y + 'px';
+      requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  // Pip-Boy terminal overlay — opens full-screen when the floating orb is clicked
+  const comingSoonCard = document.getElementById('comingSoonCard');
+  const pipboyOverlay = document.getElementById('pipboyOverlay');
+  const pipboyClose = document.getElementById('pipboyClose');
+  const closePipboy = () => pipboyOverlay && pipboyOverlay.classList.remove('open');
+  if (comingSoonCard && pipboyOverlay) {
+    comingSoonCard.addEventListener('click', () => pipboyOverlay.classList.add('open'));
+  }
+  if (pipboyClose) pipboyClose.addEventListener('click', closePipboy);
+  if (pipboyOverlay) {
+    pipboyOverlay.addEventListener('click', (e) => {
+      if (e.target === pipboyOverlay) closePipboy();
+    });
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && pipboyOverlay && pipboyOverlay.classList.contains('open')) closePipboy();
+  });
 });
