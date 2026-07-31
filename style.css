@@ -101,6 +101,7 @@ p { margin: 0; }
 .section {
   padding: clamp(4rem, 9vw, 8rem) 0;
   border-top: 1px solid var(--line);
+  box-shadow: 0 -1px 4px 0 rgba(67, 211, 138, 0.22);
 }
 
 .section-head {
@@ -189,6 +190,7 @@ p { margin: 0; }
   background: rgba(11, 11, 12, 0.92);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--line);
+  box-shadow: 0 1px 4px 0 rgba(67, 211, 138, 0.22);
 }
 
 .logo {
@@ -312,6 +314,7 @@ p { margin: 0; }
 .framework-strip {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
+  box-shadow: 0 -1px 4px 0 rgba(67, 211, 138, 0.22), 0 1px 4px 0 rgba(67, 211, 138, 0.22);
   padding: 1.6rem 0;
 }
 .framework-strip .container {
@@ -421,7 +424,7 @@ p { margin: 0; }
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 }
-.process-steps li { border-top: 1px solid var(--line); padding-top: 1rem; }
+.process-steps li { border-top: 1px solid var(--line); box-shadow: 0 -1px 4px 0 rgba(67, 211, 138, 0.22); padding-top: 1rem; }
 .process-steps .step-num { font-family: "Archivo Black"; font-size: 1.6rem; color: var(--grey); display:block; margin-bottom: 0.6rem;}
 .process-steps .step-label { font-size: 0.92rem; color: var(--cream); }
 
@@ -553,6 +556,7 @@ p { margin: 0; }
 
 .site-footer {
   border-top: 1px solid var(--line);
+  box-shadow: 0 -1px 4px 0 rgba(67, 211, 138, 0.22);
   padding: 2rem 0;
   display: flex;
   justify-content: space-between;
