@@ -39,7 +39,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const photoModal = document.getElementById('photoModal');
   const photoModalImg = document.getElementById('photoModalImg');
   const photoModalClose = document.getElementById('photoModalClose');
-  const openPhotoModal = (img) => {
+  const photoModalPrev = document.getElementById('photoModalPrev');
+  const photoModalNext = document.getElementById('photoModalNext');
+  const galleryItems = document.querySelectorAll('#gallery .gallery-item');
+  let currentGalleryItem = null;
+
+  const showImage = (img) => {
     const fullSrc = img.dataset.full;
     photoModalImg.onerror = null;
     if (fullSrc) {
@@ -52,32 +57,50 @@ document.addEventListener('DOMContentLoaded', () => {
       photoModalImg.src = img.src;
     }
     photoModalImg.alt = img.alt;
+  };
+  const openPhotoModal = (item) => {
+    currentGalleryItem = item;
+    galleryItems.forEach(i => i.classList.remove('active'));
+    item.classList.add('active');
+    showImage(item.querySelector('img'));
     photoModal.classList.add('open');
   };
   const closePhotoModal = () => photoModal.classList.remove('open');
+  const navigatePhotoModal = (dir) => {
+    if (!currentGalleryItem) return;
+    const visible = Array.from(galleryItems).filter(i => i.classList.contains('is-visible'));
+    const idx = visible.indexOf(currentGalleryItem);
+    if (idx === -1) return;
+    const nextIdx = (idx + dir + visible.length) % visible.length;
+    openPhotoModal(visible[nextIdx]);
+  };
   if (photoModalClose) photoModalClose.addEventListener('click', closePhotoModal);
+  if (photoModalPrev) photoModalPrev.addEventListener('click', () => navigatePhotoModal(-1));
+  if (photoModalNext) photoModalNext.addEventListener('click', () => navigatePhotoModal(1));
   if (photoModal) {
     photoModal.addEventListener('click', (e) => {
       if (e.target === photoModal) closePhotoModal();
     });
   }
   document.addEventListener('keydown', (e) => {
+    if (!photoModal.classList.contains('open')) return;
     if (e.key === 'Escape') closePhotoModal();
+    if (e.key === 'ArrowLeft') navigatePhotoModal(-1);
+    if (e.key === 'ArrowRight') navigatePhotoModal(1);
   });
 
   // Portfolio gallery — click a photo to expand it in-row, others blur/shrink, then pop it up full-size
   const gallery = document.getElementById('gallery');
-  const galleryItems = document.querySelectorAll('#gallery .gallery-item');
   if (gallery) {
     gallery.addEventListener('click', (e) => {
       const item = e.target.closest('.gallery-item');
       if (!item) return;
       const wasActive = item.classList.contains('active');
-      galleryItems.forEach(i => i.classList.remove('active'));
-      if (!wasActive) {
-        item.classList.add('active');
-        const img = item.querySelector('img');
-        if (img) openPhotoModal(img);
+      if (wasActive) {
+        galleryItems.forEach(i => i.classList.remove('active'));
+        closePhotoModal();
+      } else {
+        openPhotoModal(item);
       }
     });
   }
