@@ -700,15 +700,7 @@ p { margin: 0; }
 }
 .floating-orb .coming-soon-card {
   margin: 0;
-  animation: csTumble 9s ease-in-out infinite;
-}
-
-@keyframes csTumble {
-  0%   { transform: perspective(800px) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-  25%  { transform: perspective(800px) rotateX(12deg) rotateY(180deg) rotateZ(-4deg); }
-  50%  { transform: perspective(800px) rotateX(-8deg) rotateY(360deg) rotateZ(3deg); }
-  75%  { transform: perspective(800px) rotateX(6deg) rotateY(540deg) rotateZ(-2deg); }
-  100% { transform: perspective(800px) rotateX(0deg) rotateY(720deg) rotateZ(0deg); }
+  will-change: transform;
 }
 
 @media (max-width: 700px) {
@@ -1095,14 +1087,17 @@ html, body { margin: 0; padding: 0; height: 100%; }
 #tab-stat:checked ~ .pipboy-chassis .dynamic-title::before { content: "SYS_STATUS"; }
 #tab-inv:checked ~ .pipboy-chassis .dynamic-title::before { content: "INVENTORY"; }
 #tab-data:checked ~ .pipboy-chassis .dynamic-title::before { content: "DATA_LINK"; }
+#tab-bio:checked ~ .pipboy-chassis .dynamic-title::before { content: "PROFILE"; }
 
 #tab-stat:checked ~ .pipboy-chassis .content-stat,
 #tab-inv:checked ~ .pipboy-chassis .content-inv,
-#tab-data:checked ~ .pipboy-chassis .content-data { display: flex; }
+#tab-data:checked ~ .pipboy-chassis .content-data,
+#tab-bio:checked ~ .pipboy-chassis .content-bio { display: flex; }
 
 #tab-stat:checked ~ .pipboy-chassis label[for="tab-stat"],
 #tab-inv:checked ~ .pipboy-chassis label[for="tab-inv"],
-#tab-data:checked ~ .pipboy-chassis label[for="tab-data"] {
+#tab-data:checked ~ .pipboy-chassis label[for="tab-data"],
+#tab-bio:checked ~ .pipboy-chassis label[for="tab-bio"] {
   background-color: var(--pip-green);
   color: var(--bg-dark);
   text-shadow: none;
@@ -1165,6 +1160,23 @@ html, body { margin: 0; padding: 0; height: 100%; }
 }
 
 .pipboy-wrapper .content-data { justify-content: center; align-items: center; flex-direction: column; gap: 15px; }
+
+.pipboy-wrapper .content-bio {
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  gap: 0.6rem;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  padding-right: 0.5rem;
+}
+.pipboy-wrapper .content-bio p { margin: 0; }
+.pipboy-wrapper .bio-name { font-size: 1.6rem; margin: 0 0 0.2rem; }
+.pipboy-wrapper .bio-fullname { font-weight: bold; font-size: 0.85rem; }
+.pipboy-wrapper .bio-title { opacity: 0.85; }
+.pipboy-wrapper .bio-dept { opacity: 0.85; margin-top: 0.4rem; }
+.pipboy-wrapper .bio-ig { margin-top: 0.4rem; opacity: 0.7; }
 .pipboy-wrapper .radar-container {
   position: relative;
   width: 160px;

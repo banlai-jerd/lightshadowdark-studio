@@ -123,9 +123,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Floating orb — drifts continuously and bounces off the browser edges, DVD-logo style
+  // Floating orb — space-junk physics: drifts, bounces off the browser edges,
+  // and tumbles on all three axes with no repeating pattern
   const floatingOrb = document.getElementById('floatingOrb');
-  if (floatingOrb) {
+  const floatingCard = document.getElementById('comingSoonCard');
+  if (floatingOrb && floatingCard) {
     let w = floatingOrb.offsetWidth || 350;
     let h = floatingOrb.offsetHeight || 280;
     let x = Math.random() * Math.max(0, window.innerWidth - w);
@@ -135,17 +137,38 @@ document.addEventListener('DOMContentLoaded', () => {
     let vx = Math.cos(angle) * speed;
     let vy = Math.sin(angle) * speed;
 
+    let rx = Math.random() * 360;
+    let ry = Math.random() * 360;
+    let rz = Math.random() * 360;
+    let wx = (Math.random() - 0.5) * 0.6;
+    let wy = (Math.random() - 0.5) * 0.6;
+    let wz = (Math.random() - 0.5) * 0.6;
+    const jolt = () => (Math.random() - 0.5) * 1.2;
+
     const step = () => {
       w = floatingOrb.offsetWidth;
       h = floatingOrb.offsetHeight;
       x += vx;
       y += vy;
-      if (x <= 0) { x = 0; vx = Math.abs(vx); }
-      else if (x + w >= window.innerWidth) { x = window.innerWidth - w; vx = -Math.abs(vx); }
-      if (y <= 0) { y = 0; vy = Math.abs(vy); }
-      else if (y + h >= window.innerHeight) { y = window.innerHeight - h; vy = -Math.abs(vy); }
+      if (x <= 0) { x = 0; vx = Math.abs(vx); wy += jolt(); wz += jolt(); }
+      else if (x + w >= window.innerWidth) { x = window.innerWidth - w; vx = -Math.abs(vx); wy += jolt(); wz += jolt(); }
+      if (y <= 0) { y = 0; vy = Math.abs(vy); wx += jolt(); wz += jolt(); }
+      else if (y + h >= window.innerHeight) { y = window.innerHeight - h; vy = -Math.abs(vy); wx += jolt(); wz += jolt(); }
       floatingOrb.style.left = x + 'px';
       floatingOrb.style.top = y + 'px';
+
+      // slow random drift in spin speed so the tumble never settles into a loop
+      wx += (Math.random() - 0.5) * 0.015;
+      wy += (Math.random() - 0.5) * 0.015;
+      wz += (Math.random() - 0.5) * 0.015;
+      wx = Math.max(-1.2, Math.min(1.2, wx));
+      wy = Math.max(-1.2, Math.min(1.2, wy));
+      wz = Math.max(-1.2, Math.min(1.2, wz));
+      rx += wx;
+      ry += wy;
+      rz += wz;
+      floatingCard.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg)`;
+
       requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
