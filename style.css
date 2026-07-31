@@ -146,6 +146,7 @@ p { margin: 0; }
   height: 88px;
   padding: 0.5rem;
   border: 1px solid var(--line);
+  box-shadow: 0 0 4px 0 rgba(67, 211, 138, 0.22);
   margin-bottom: -1px;
   background: rgba(11, 11, 12, 0.55);
   backdrop-filter: blur(6px);
@@ -215,6 +216,7 @@ p { margin: 0; }
   display: none;
   background: none;
   border: 1px solid var(--line);
+  box-shadow: 0 0 4px 0 rgba(67, 211, 138, 0.22);
   color: var(--cream);
   width: 42px;
   height: 42px;
@@ -397,9 +399,11 @@ p { margin: 0; }
   gap: 1px;
   background: var(--line);
   border: 1px solid var(--line);
+  box-shadow: 0 0 4px 0 rgba(67, 211, 138, 0.22);
 }
 .service-card {
   background: var(--black);
+  box-shadow: 0 0 4px 0 rgba(67, 211, 138, 0.16);
   padding: clamp(1.6rem, 3vw, 2.4rem);
 }
 .service-card .num { color: var(--grey); font-size: 0.8rem; letter-spacing: 0.1em; }
@@ -439,6 +443,7 @@ p { margin: 0; }
 .filter-tabs button {
   background: none;
   border: 1px solid var(--line);
+  box-shadow: 0 0 4px 0 rgba(67, 211, 138, 0.22);
   color: var(--grey);
   padding: 0.55rem 1.2rem;
   font-size: 0.75rem;
@@ -523,6 +528,7 @@ p { margin: 0; }
   text-transform: uppercase;
   color: var(--grey);
   border: 1px solid var(--line);
+  box-shadow: 0 0 4px 0 rgba(67, 211, 138, 0.22);
   padding: 0.25rem 0.6rem;
   border-radius: 999px;
 }
@@ -745,6 +751,7 @@ html, body { margin: 0; padding: 0; height: 100%; }
   right: clamp(1.25rem, 4vw, 3rem);
   background: none;
   border: 1px solid var(--line);
+  box-shadow: 0 0 4px 0 rgba(67, 211, 138, 0.22);
   color: var(--cream);
   width: 44px;
   height: 44px;
@@ -759,6 +766,7 @@ html, body { margin: 0; padding: 0; height: 100%; }
   transform: translateY(-50%);
   background: rgba(11, 11, 12, 0.55);
   border: 1px solid var(--line);
+  box-shadow: 0 0 4px 0 rgba(67, 211, 138, 0.22);
   color: var(--cream);
   width: 56px;
   height: 56px;
