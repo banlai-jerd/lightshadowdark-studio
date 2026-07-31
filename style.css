@@ -82,7 +82,7 @@ p { margin: 0; }
 
 
 .shine1 {
-  font-size: 3em;
+  font-size: 2em;
   font-weight: 900;
   color: rgba(255, 255, 255, 0.3);
   background: #222 -webkit-gradient(
@@ -114,7 +114,7 @@ p { margin: 0; }
     background-position: -200px;
   }
   20% {
-    background-position: topleft;
+    background-position: topdown;
   }
   100% {
     background-position: 200px;
