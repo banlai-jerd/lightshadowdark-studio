@@ -1084,82 +1084,16 @@ html, body { margin: 0; padding: 0; height: 100%; }
 .pipboy-wrapper .middle-section { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
 .pipboy-wrapper .tab-content { display: none; width: 100%; height: 100%; animation: screenGlitch 0.4s ease-out; }
 
-#tab-stat:checked ~ .pipboy-chassis .dynamic-title::before { content: "SYS_STATUS"; }
-#tab-inv:checked ~ .pipboy-chassis .dynamic-title::before { content: "INVENTORY"; }
-#tab-data:checked ~ .pipboy-chassis .dynamic-title::before { content: "DATA_LINK"; }
 #tab-bio:checked ~ .pipboy-chassis .dynamic-title::before { content: "PROFILE"; }
 
-#tab-stat:checked ~ .pipboy-chassis .content-stat,
-#tab-inv:checked ~ .pipboy-chassis .content-inv,
-#tab-data:checked ~ .pipboy-chassis .content-data,
 #tab-bio:checked ~ .pipboy-chassis .content-bio { display: flex; }
 
-#tab-stat:checked ~ .pipboy-chassis label[for="tab-stat"],
-#tab-inv:checked ~ .pipboy-chassis label[for="tab-inv"],
-#tab-data:checked ~ .pipboy-chassis label[for="tab-data"],
 #tab-bio:checked ~ .pipboy-chassis label[for="tab-bio"] {
   background-color: var(--pip-green);
   color: var(--bg-dark);
   text-shadow: none;
   box-shadow: 0 0 10px var(--pip-glow);
 }
-
-.pipboy-wrapper .content-stat { justify-content: space-between; align-items: center; }
-.pipboy-wrapper .side-menu { display: flex; flex-direction: column; gap: 10px; font-size: 1rem; }
-.pipboy-wrapper .active-box-static { border: 2px solid var(--pip-green); padding: 2px 8px; box-shadow: inset 0 0 10px var(--pip-glow); }
-
-.pipboy-wrapper .clock-display { display: flex; flex-direction: column; align-items: center; }
-.pipboy-wrapper .terminal-block {
-  background-color: var(--pip-green);
-  border-radius: 6px;
-  padding: 10px 20px;
-  margin-bottom: 5px;
-  box-shadow: 0 0 25px var(--pip-glow);
-  animation: blockPulse 4s infinite alternate;
-}
-.pipboy-wrapper .terminal-block .time {
-  color: var(--bg-dark);
-  font-size: 4rem;
-  font-weight: bold;
-  text-shadow: none;
-  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.5));
-}
-.pipboy-wrapper .date { font-size: 1.2rem; font-weight: bold; letter-spacing: 2px; }
-
-.pipboy-wrapper .right-menu { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-.pipboy-wrapper .rad-text { font-size: 1rem; font-weight: bold; letter-spacing: 2px; }
-.pipboy-wrapper .hazard-symbol {
-  width: 50px;
-  height: 50px;
-  position: relative;
-  background: conic-gradient(var(--pip-green) 0deg 60deg, transparent 60deg 120deg, var(--pip-green) 120deg 180deg, transparent 180deg 240deg, var(--pip-green) 240deg 300deg, transparent 300deg 360deg);
-  border-radius: 50%;
-  animation: radarSpin 8s linear infinite;
-  box-shadow: 0 0 15px var(--pip-glow);
-}
-.pipboy-wrapper .hazard-core { position: absolute; inset: 10px; background: var(--bg-dark); border-radius: 50%; }
-.pipboy-wrapper .hazard-core::after { content: ""; position: absolute; inset: 6px; background: var(--pip-green); border-radius: 50%; }
-
-.pipboy-wrapper .content-inv { flex-direction: column; font-size: 1rem; width: 100%; justify-content: flex-start; }
-.pipboy-wrapper .inventory-list { list-style: none; padding: 0; margin: 0; width: 100%; }
-.pipboy-wrapper .inventory-list li {
-  display: flex;
-  justify-content: space-between;
-  padding: 6px;
-  border-bottom: 1px dashed rgba(26, 255, 64, 0.3);
-  cursor: crosshair;
-}
-.pipboy-wrapper .inventory-list li:hover,
-.pipboy-wrapper .active-terminal-line {
-  background-color: var(--pip-green);
-  color: var(--bg-dark);
-  font-weight: bold;
-  text-shadow: none;
-  box-shadow: 0 0 10px var(--pip-glow);
-  padding: 6px 11px;
-}
-
-.pipboy-wrapper .content-data { justify-content: center; align-items: center; flex-direction: column; gap: 15px; }
 
 .pipboy-wrapper .content-bio {
   flex-direction: column;
@@ -1177,61 +1111,6 @@ html, body { margin: 0; padding: 0; height: 100%; }
 .pipboy-wrapper .bio-title { opacity: 0.85; }
 .pipboy-wrapper .bio-dept { opacity: 0.85; margin-top: 0.4rem; }
 .pipboy-wrapper .bio-ig { margin-top: 0.4rem; opacity: 0.7; }
-.pipboy-wrapper .radar-container {
-  position: relative;
-  width: 160px;
-  height: 160px;
-  background: rgba(26, 255, 64, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  box-shadow: inset 0 0 20px var(--pip-glow);
-  border: 2px solid var(--pip-green);
-}
-.pipboy-wrapper .radar-container::before {
-  content: "";
-  position: absolute;
-  inset: 20px;
-  background: rgba(26, 255, 64, 0.15);
-  border-radius: 50%;
-  border: 1px dashed rgba(26, 255, 64, 0.3);
-}
-.pipboy-wrapper .radar-container::after {
-  content: "";
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  background: rgba(26, 255, 64, 0.25);
-  border-radius: 50%;
-  border: 1px solid var(--pip-green);
-}
-.pipboy-wrapper .radar-container span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  transform-origin: top left;
-  animation: angularRotation 2s linear infinite;
-  box-shadow: 6px -100px 40px -30px var(--pip-green);
-  border-top: 2px solid var(--pip-green);
-  z-index: 2;
-}
-.pipboy-wrapper .blip {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: #fff;
-  border-radius: 50%;
-  top: 35px;
-  left: 100px;
-  box-shadow: 0 0 10px #fff, 0 0 20px var(--pip-green);
-  animation: blipFade 2s infinite;
-  z-index: 3;
-}
 
 .pipboy-wrapper .radio-visualizer { display: flex; gap: 3px; align-items: flex-end; height: 15px; margin-left: 10px; }
 .pipboy-wrapper .bar { width: 4px; background-color: var(--pip-green); animation: eqBounce 1s infinite alternate; }
@@ -1253,11 +1132,7 @@ html, body { margin: 0; padding: 0; height: 100%; }
   60% { transform: scale(1, 1); filter: brightness(2); }
   100% { transform: scale(1, 1); opacity: 1; filter: brightness(1); }
 }
-@keyframes angularRotation { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-@keyframes radarSpin { 100% { transform: rotate(360deg); } }
-@keyframes blipFade { 0%, 85% { opacity: 0; } 90% { opacity: 1; transform: scale(1.5); } 100% { opacity: 0; } }
 @keyframes eqBounce { 0% { height: 3px; } 100% { height: 15px; } }
-@keyframes blockPulse { 0% { box-shadow: 0 0 15px var(--pip-glow); } 100% { box-shadow: 0 0 35px var(--pip-glow); } }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 @keyframes flicker { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
@@ -1271,38 +1146,16 @@ html, body { margin: 0; padding: 0; height: 100%; }
   .pipboy-wrapper .pipboy-chassis { padding: 1.5rem; border-radius: 1.5rem; }
   .pipboy-wrapper .crt-screen { border-width: 5px; }
   .pipboy-wrapper .boot-sequence { padding: 1.2rem; }
-  .pipboy-wrapper .terminal-block .time { font-size: 3rem; }
   .pipboy-wrapper .top-bar, .pipboy-wrapper .bottom-bar { font-size: 0.8rem; }
-  .pipboy-wrapper .side-menu, .pipboy-wrapper .inventory-list { font-size: 0.85rem; }
-  .pipboy-wrapper .radar-container { width: 130px; height: 130px; }
-  .pipboy-wrapper .radar-container::before { inset: 15px; }
-  .pipboy-wrapper .radar-container::after { width: 40px; height: 40px; }
-  .pipboy-wrapper .blip { top: 30px; left: 85px; }
-  .pipboy-wrapper .hazard-symbol { width: 40px; height: 40px; }
-  .pipboy-wrapper .hazard-core { inset: 8px; }
-  .pipboy-wrapper .hazard-core::after { inset: 4px; }
 }
 
 @container pipboy (max-width: 450px) {
   .pipboy-wrapper .pipboy-chassis { padding: 1rem; border-radius: 1rem; }
   .pipboy-wrapper .crt-screen { border-width: 4px; }
   .pipboy-wrapper .boot-sequence { padding: 0.8rem; }
-  .pipboy-wrapper .terminal-block { padding: 4px 8px; }
-  .pipboy-wrapper .terminal-block .time { font-size: 1.5rem; }
-  .pipboy-wrapper .date { font-size: 0.7rem; letter-spacing: 1px; }
   .pipboy-wrapper .top-bar { margin-bottom: 0.8rem; }
   .pipboy-wrapper .top-bar, .pipboy-wrapper .bottom-bar { font-size: 0.6rem; }
   .pipboy-wrapper .stats-info { gap: 5px; }
   .pipboy-wrapper .flexible { margin: 0 5px; }
   .pipboy-wrapper .nav-item { padding: 2px 4px; }
-  .pipboy-wrapper .side-menu { font-size: 0.6rem; gap: 5px; }
-  .pipboy-wrapper .inventory-list { font-size: 0.65rem; }
-  .pipboy-wrapper .rad-text, .pipboy-wrapper .radar-text { font-size: 0.6rem; }
-  .pipboy-wrapper .radar-container { width: 100px; height: 100px; }
-  .pipboy-wrapper .radar-container::before { inset: 12px; }
-  .pipboy-wrapper .radar-container::after { width: 30px; height: 30px; }
-  .pipboy-wrapper .blip { top: 20px; left: 65px; width: 4px; height: 4px; }
-  .pipboy-wrapper .hazard-symbol { width: 30px; height: 30px; box-shadow: 0 0 10px var(--pip-glow); }
-  .pipboy-wrapper .hazard-core { inset: 6px; }
-  .pipboy-wrapper .hazard-core::after { inset: 3px; }
 }

@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./style.css?v=21">
+<link rel="stylesheet" href="./style.css?v=22">
 </head>
 <body>
 
@@ -338,10 +338,7 @@
 <div class="pipboy-overlay" id="pipboyOverlay">
   <button class="pipboy-close" id="pipboyClose">✕</button>
   <div class="pipboy-wrapper">
-    <input type="radio" id="tab-stat" name="pip-tabs" checked>
-    <input type="radio" id="tab-inv" name="pip-tabs">
-    <input type="radio" id="tab-data" name="pip-tabs">
-    <input type="radio" id="tab-bio" name="pip-tabs">
+    <input type="radio" id="tab-bio" name="pip-tabs" checked>
     <div class="pipboy-chassis">
       <div class="screw tl"></div>
       <div class="screw tr"></div>
@@ -361,42 +358,6 @@
             </div>
           </header>
           <main class="middle-section">
-            <div class="tab-content content-stat">
-              <aside class="side-menu">
-                <div>CND</div>
-                <div>RAD</div>
-                <div>EFF</div>
-                <div class="active-box-static">CLK</div>
-              </aside>
-              <section class="clock-display">
-                <div class="terminal-block">
-                  <div class="time">08<span class="blink-colon">:</span>40</div>
-                </div>
-                <div class="date">02.23.2026</div>
-              </section>
-              <aside class="right-menu">
-                <div class="hazard-symbol">
-                  <div class="hazard-core"></div>
-                </div>
-                <div class="rad-text">RADS</div>
-              </aside>
-            </div>
-            <div class="tab-content content-inv">
-              <ul class="inventory-list">
-                <li><span class="item-name">Stimpak (12)</span><span class="item-wgt">WGT 0.5</span></li>
-                <li class="active-terminal-line"><span class="item-name">10mm Pistol</span><span class="item-wgt">WGT 4.0</span></li>
-                <li><span class="item-name">Nuka-Cola Quantum</span><span class="item-wgt">WGT 1.0</span></li>
-                <li><span class="item-name">RadAway (5)</span><span class="item-wgt">WGT 0.5</span></li>
-                <li><span class="item-name">Power Armor Core</span><span class="item-wgt">WGT 3.0</span></li>
-              </ul>
-            </div>
-            <div class="tab-content content-data">
-              <div class="radar-container">
-                <span></span>
-                <div class="blip"></div>
-              </div>
-              <div class="radar-text flicker-fast">SEARCHING SATELLITE...</div>
-            </div>
             <div class="tab-content content-bio">
               <h3 class="bio-name">Maanipulator</h3>
               <p class="bio-fullname">Jirawat Maan Sriluansoi</p>
@@ -408,12 +369,6 @@
             </div>
           </main>
           <footer class="bottom-bar">
-            <label for="tab-stat" class="nav-item">STAT</label>
-            <div class="line flexible"></div>
-            <label for="tab-inv" class="nav-item">INV</label>
-            <div class="line flexible"></div>
-            <label for="tab-data" class="nav-item">DATA</label>
-            <div class="line flexible"></div>
             <label for="tab-bio" class="nav-item">BIO</label>
             <div class="line flexible"></div>
             <div class="radio-visualizer">
@@ -429,6 +384,6 @@
   </div>
 </div>
 
-<script src="./script.js?v=21"></script>
+<script src="./script.js?v=22"></script>
 </body>
 </html>
